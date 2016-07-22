@@ -41,6 +41,8 @@ Private nowTime_ As Long
 Private repeat_ As Boolean
 ' Call `callback` within a certain period of time.
 Private intervalTime_ As Long
+' fps
+Private fps_ As Double
 
 ' A pointer to the object.
 Private cbObject_ As Object
@@ -74,6 +76,10 @@ End Property
 
 Public Property Let repeat(ByVal v As Boolean)
   repeat_ = v
+End Property
+
+Public Property Let fps(ByVal v As Double)
+  fps_ = v
 End Property
 
 Public Property Let cbObject(ByVal v As Object)
@@ -113,6 +119,10 @@ Public Property Get repeat() As Boolean
   repeat = repeat_
 End Property
 
+Public Property Get fps() As Double
+  fps = fps_
+End Property
+
 Public Property Get cbObject() As Object
   Set cbObject = cbObject_
 End Property
@@ -139,6 +149,7 @@ Private Sub Class_Initialize()
   nowTime = Timer
   repeat = False
   intervalTime = "00:01:00"
+  fps = 1
 End Sub
 
 Private Sub Class_Terminate()
@@ -244,7 +255,7 @@ Public Sub run()
       End If
     End If
     
-    Sleep (kMillsec)
+    Sleep (kMillsec / fps)
     DoEvents
   Loop
 End Sub

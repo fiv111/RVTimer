@@ -7,6 +7,9 @@ Public Sub test()
   Dim t As RVTimer
   Set t = New RVTimer
 
+  ' fps 1 frame per second
+  t.fps = 1
+
   ' time setting.
   ' from
   t.startTime    = "00:10:00"
@@ -67,6 +70,9 @@ cbType = VbMethod
 ' A parameter ArrayList which is passed to the property or method being called.
 cbArgList.add "arg1"
 cbArgList.add "arg2"
+
+' FPS. Default value is 1.
+fps = 1
 ```
 
 #### Property
@@ -78,6 +84,7 @@ Public Property Let endTime(ByVal v As String)
 Public Property Let setTime(ByVal v As String)
 Public Property Let intervalTime(ByVal v As String)
 Public Property Let repeat(ByVal v As Boolean)
+Public Property Let fps(ByVal v As Long)
 Public Property Let cbObject(ByVal v As Object)
 Public Property Let cbFuncName(ByVal v As String)
 Public Property Let cbType(ByVal v As Integer)
@@ -90,6 +97,7 @@ Public Property Get endTime() As String
 Public Property Get setTime() As String
 Public Property Get nowTime() As Long
 Public Property Get intervalTime() As String
+Public Property Get fps() As Long
 Public Property Get repeat() As Boolean
 Public Property Get cbObject() As Object
 Public Property Get cbFuncName() As String
