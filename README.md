@@ -8,11 +8,18 @@ Public Sub test()
   Set t = New RVTimer
 
   ' time setting.
-  t.startTime    = "11:10:00"
-  t.endTime      = "11:25:00"
-  t.setTime      = "11:24:00"
-  t.intervalTime = "00:00:10"
+  ' from
+  t.startTime    = "00:10:00"
+
+  ' to
+  t.endTime      = "00:15:00"
+
+  ' call `callback` from 00:11:00
+  t.setTime      = "00:11:00"
+
+  ' Repeat even minute, after 00:11:00.
   t.repeat       = True
+  t.intervalTime = "00:01:00"
 
   ' callback function setting.
   t.cbObject   = someObject
